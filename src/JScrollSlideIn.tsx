@@ -1,4 +1,4 @@
-import React, { ReactNode, useEffect, useState } from "react";
+import React, { CSSProperties, ReactNode, useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
 import { useSpring, animated } from "@react-spring/web";
 
@@ -6,9 +6,15 @@ type Props = {
   children: ReactNode;
   onAnimationEnd?: () => void;
   delay?: number;
+  style?: CSSProperties;
 };
 
-export const JScrollSlideIn = ({ children, onAnimationEnd, delay }: Props) => {
+export const JScrollSlideIn = ({
+  children,
+  onAnimationEnd,
+  delay,
+  style,
+}: Props) => {
   const [isVisible, setIsVisible] = useState(false);
   const { ref, inView } = useInView({
     threshold: 0.1,
@@ -29,7 +35,7 @@ export const JScrollSlideIn = ({ children, onAnimationEnd, delay }: Props) => {
   });
 
   return (
-    <animated.div ref={ref} style={spring}>
+    <animated.div ref={ref} style={{ ...style, ...spring }}>
       {children}
     </animated.div>
   );

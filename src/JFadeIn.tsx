@@ -1,12 +1,13 @@
 import React, { useSpring, animated } from "@react-spring/web";
-import { ReactNode } from "react";
+import { CSSProperties, ReactNode } from "react";
 
 type Props = {
   children: ReactNode;
   delay?: number;
+  style?: CSSProperties;
 };
 
-export const JFadeIn = ({ children, delay }: Props) => {
+export const JFadeIn = ({ children, delay, style }: Props) => {
   const spring = useSpring({
     from: { opacity: 0 },
     to: { opacity: 1 },
@@ -14,5 +15,7 @@ export const JFadeIn = ({ children, delay }: Props) => {
     config: { duration: 700 },
   });
 
-  return <animated.div style={spring}>{children}</animated.div>;
+  return (
+    <animated.div style={{ ...style, ...spring }}>{children}</animated.div>
+  );
 };
