@@ -1,0 +1,21 @@
+{
+  "name": "j-animation",
+  "version": "1.0.01",
+  "main": "src/index",
+  "types": "src/index",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-intersection-observer": "^9.3.2",
+    "@react-spring/web": "^9.4.3"
+  },
+  "devDependencies": {
+    "@types/node": "^20.12.2",
+    "@types/react": "^18.2.74",
+    "typescript": "^5.0.4"
+  }
+}
