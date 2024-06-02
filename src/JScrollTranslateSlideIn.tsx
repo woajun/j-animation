@@ -31,9 +31,9 @@ export const JScrollTranslateSlideIn = ({
   }, [inView, isVisible]);
 
   const spring = useSpring({
-    from: { x: direction, opacity: 0 },
+    from: { x: fromX, opacity: 0 },
     to: {
-      x: isVisible ? 0 : direction,
+      x: isVisible ? 0 : fromX,
       opacity: isVisible ? 1 : 0,
     },
     delay,
