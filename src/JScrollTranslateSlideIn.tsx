@@ -7,6 +7,7 @@ type Props = {
   onAnimationEnd?: () => void;
   delay?: number;
   style?: CSSProperties;
+  direction?: "left" | "right";
 };
 
 export const JScrollTranslateSlideIn = ({
@@ -14,11 +15,14 @@ export const JScrollTranslateSlideIn = ({
   onAnimationEnd,
   delay,
   style,
+  direction = "left",
 }: Props) => {
   const [isVisible, setIsVisible] = useState(false);
   const { ref, inView } = useInView({
     threshold: 0.1,
   });
+
+  const fromX = direction === "left" ? 100 : -100;
 
   useEffect(() => {
     if (inView && !isVisible) {
@@ -27,9 +31,9 @@ export const JScrollTranslateSlideIn = ({
   }, [inView, isVisible]);
 
   const spring = useSpring({
-    from: { x: 100, opacity: 0 },
+    from: { x: direction, opacity: 0 },
     to: {
-      x: isVisible ? 0 : 100,
+      x: isVisible ? 0 : direction,
       opacity: isVisible ? 1 : 0,
     },
     delay,
