@@ -1,5 +1,5 @@
 import { useSpring, animated } from "@react-spring/web";
-import React, { CSSProperties, ReactNode } from "react";
+import { CSSProperties, ReactNode } from "react";
 
 type Props = {
   children: ReactNode;

@@ -1,4 +1,4 @@
-import React, { useSpring, animated } from "@react-spring/web";
+import { useSpring, animated } from "@react-spring/web";
 import { CSSProperties, ReactNode } from "react";
 
 type Props = {
