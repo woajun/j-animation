@@ -10,9 +10,15 @@ type SingleTextProps = {
 };
 
 const SingleText = ({ text, isShow, delay, style }: SingleTextProps) => {
-  const { transform } = useSpring({
-    from: { transform: "rotateX(-90deg)" },
-    to: { transform: isShow ? "rotateX(0deg)" : "rotateX(90deg)" },
+  const springValues = useSpring({
+    from: {
+      transform: "rotateX(-90deg)",
+      opacity: 0,
+    },
+    to: {
+      transform: isShow ? "rotateX(0deg)" : "rotateX(90deg)",
+      opacity: isShow ? 1 : 0,
+    },
     config: { duration: 380 },
     delay,
   });
@@ -26,7 +32,7 @@ const SingleText = ({ text, isShow, delay, style }: SingleTextProps) => {
         transformOrigin: "50% 50% 25px",
         whiteSpace: "pre-wrap",
         ...style,
-        transform,
+        ...springValues,
       }}
     >
       {text}
